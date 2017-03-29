@@ -1,12 +1,21 @@
-@keyframes arrow {
+/*-----------------------*
+  #VARIABLES
+ *-----------------------*/
+/*-----------------------*
+  #ANIMATION
+ *-----------------------*/
+@keyframes tip {
   0% {
-    transform: translateY(0);
+    transform: scale3d(1, 1, 1);
   }
   100% {
-    transform: translateY(0.5rem);
+    transform: scale3d(1.2, 1.2, 1);
   }
 }
 
+/*-----------------------*
+  #RESET
+ *-----------------------*/
 html {
   box-sizing: border-box;
   -ms-text-size-adjust: 100%;
@@ -31,10 +40,10 @@ p {
   margin: 0;
 }
 
-img {
+img,
+video {
   box-sizing: border-box;
   display: block;
-  width: 100%;
   max-width: 100%;
 }
 
@@ -89,14 +98,18 @@ button:focus {
   outline: 0;
 }
 
+/*-----------------------*
+  #ELEMENTS
+ *-----------------------*/
 html,
 button {
-  font: normal 400 20px/1.5 monospace, monospace;
+  font: normal 400 20px/1.2 "Indie Flower", monospace;
 }
 
-h1,
-label {
-  font-weight: 700;
+h1 {
+  font-family: "Griffy";
+  font-style: normal;
+  font-weight: 400;
 }
 
 small,
@@ -106,32 +119,104 @@ label {
 
 progress {
   border: 2px solid #111;
-  height: 1.5rem;
+  border-radius: 4px;
+  height: 1.4rem;
   background: transparent;
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.5);
 }
 
 progress::-webkit-progress-value {
-  background: dodgerblue;
+  background: linear-gradient(rgba(229, 57, 53, 0.5), #e53935);
 }
 
 progress::-moz-progress-bar {
-  background: dodgerblue;
+  background: linear-gradient(rgba(229, 57, 53, 0.5), #e53935);
 }
 
 a {
   transition: .2s;
 }
 
+/*-----------------------*
+  #BASE CLASSES
+ *-----------------------*/
 .padding-wrapper {
   padding: .5rem;
 }
 
 .pad-wrapper {
+  width: 100%;
   max-width: 600px;
 }
 
+.margin-top {
+  margin-top: 1rem;
+}
+
+/*-----------------------*
+  #CUSTOM CLASSES
+ *-----------------------*/
+.h1 {
+  font-size: 3rem;
+}
+
+@media (max-width: 600px) {
+  .h1 {
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+}
+
+.tip {
+  position: absolute;
+  top: calc(50% - 2rem);
+  left: calc(50% - 3rem);
+  padding: .5rem;
+  background: rgba(229, 57, 53, 0.5);
+  color: #fff;
+  width: 6rem;
+  height: 4rem;
+  pointer-events: none;
+  animation: tip 1.6s ease-in infinite alternate-reverse;
+  -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
+
+.clicked > .tip {
+  opacity: 0;
+  transition: .8s;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: underline;
+  transform: scale3d(1, 1, 1);
+}
+
+@media (min-device-width: 1280px) {
+  .link:hover {
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+.link:active {
+  transform: scale3d(1.2, 1.2, 1);
+}
+
+.completed::after {
+  display: inline-block;
+  vertical-align: bottom;
+  content: attr(data-percent) "%";
+  margin-left: .25rem;
+  font-family: monospace;
+}
+
+/*-----------------------*
+  #GRID
+ *-----------------------*/
 html {
   height: 100%;
+  background: #fff;
 }
 
 body {
@@ -166,75 +251,14 @@ main {
   align-items: center;
 }
 
-.width-100 {
-  width: 100%;
-}
-
-.margin-top {
-  margin-top: 1rem;
-}
-
-.header {
-  font-size: 2rem;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.header::first-letter {
-  display: inline-block;
-  padding: 0 .1rem 0 1rem;
-  background: dodgerblue;
-  color: #fff;
-}
-
-.container {
-  position: relative;
-}
-
-.sub-header {
-  position: absolute;
-  top: -1.5rem;
-  left: calc(50% - 2.5rem);
-  font-size: .7rem;
-  line-height: 1.1;
-  color: #666;
-  width: 5rem;
-  pointer-events: none;
-}
-
-.arrow {
-  display: inline-block;
-  position: absolute;
-  top: .7rem;
-  right: 1rem;
-  font-size: 1rem;
-  color: #111;
-  animation: arrow 1s ease-in infinite alternate-reverse;
-}
-
-.footer {
+.text-align-right {
   text-align: right;
 }
 
-.link {
-  display: inline-block;
-  text-decoration: underline;
-  transform: translateZ(0) scale(1);
+.text-align-center {
+  text-align: center;
 }
 
-@media (min-device-width: 1280px) {
-  .link:hover {
-    transform: translateZ(0) scale(1.2);
-  }
-}
-
-.link:active {
-  transform: translateZ(0) scale(1.2);
-}
-
-.completed::after {
-  display: inline-block;
-  content: attr(data-percent) "%";
-  margin-left: .25rem;
-  transform: scale(1.1);
+.position-relative {
+  position: relative;
 }

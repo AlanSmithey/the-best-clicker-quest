@@ -5,7 +5,8 @@
     'use strict';
     var counter = 0;
     var elements = [
-        'css/styles.min.css'
+        'css/styles.min.css',
+        'https://fonts.googleapis.com/css?family=Griffy|Indie+Flower'
     ];
 
     function count() {
@@ -44,14 +45,11 @@
  *-----------------------*/
 (function() {
     'use strict';
-    var images = document.querySelectorAll('[data-srcset]');
+    var images = document.getElementsByTagName('img');
 
     if (images) {
         for (var i = 0, len = images.length; i < len; i++) {
-
-            var imgAttr = images[i].getAttribute('data-srcset');
-
-            images[i].setAttribute('srcset', imgAttr);
+            images[i].removeAttribute('srcset');
         }
     }
 })();
@@ -63,18 +61,21 @@
     'use strict';
     var button = document.getElementById('button'),
         progress = document.getElementById('progress'),
-        label = progress.labels.item(0);
+        label = document.getElementById('label');
 
-    var step = 100,
-        percent = 1;
+    var percent = 0,
+        x = 0;
 
     function clickHandler(e) {
+        button.classList.add('clicked');
+
         if(progress.value < progress.max) {
-            progress.value += (step - percent);
+            progress.value = Math.sqrt(++x);
         } else {
-            label.setAttribute('data-percent', percent++);
+            label.setAttribute('data-percent', ++percent);
             label.classList.add('completed');
             progress.value = 0;
+            x = 0;
         }
     }
 

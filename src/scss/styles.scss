@@ -1,230 +1,266 @@
 @charset "UTF-8";
 
-@keyframes arrow {
-  0% {
-    transform : translateY(0);
-  }
+/*-----------------------*
+  #VARIABLES
+ *-----------------------*/
+$prim_color        : #111;
+$bg_color          : #fff;
+$accent_color      : rgba(229,57,53,.5);
+$accent_color_full : rgba(229,57,53,1);
 
-  100% {
-    transform : translateY(.5rem);
-  }
+$font_prim : 'Griffy';
+$font_sec  : 'Indie Flower';
+
+$font_prim_weight : 400;
+$font_sec_weight  : 400;
+
+$font_prim_style : normal;
+$font_sec_style  : normal;
+/*-----------------------*
+  #ANIMATION
+ *-----------------------*/
+@keyframes tip {
+    0% {
+        transform : scale3d(1, 1, 1);
+    }
+
+    100% {
+        transform : scale3d(1.2, 1.2, 1);
+    }
 }
 
+/*-----------------------*
+  #RESET
+ *-----------------------*/
 html {
-  box-sizing                  : border-box; // normalize box-sizing
-  -ms-text-size-adjust        : 100%; // prevent adjustments of font size after orientation changes in IE
-  -webkit-text-size-adjust    : 100%; // prevent adjustments of font size after orientation changes in iOS
-  -webkit-font-smoothing      : antialiased; // make text sharper
-  -moz-osx-font-smoothing     : grayscale; // make text sharper
-  -webkit-tap-highlight-color : transparent; // overrides the highlight color shown when the user taps a link or a JavaScript clickable element in Safari on iOS
+    box-sizing                  : border-box; // normalize box-sizing
+    -ms-text-size-adjust        : 100%; // prevent adjustments of font size after orientation changes in IE
+    -webkit-text-size-adjust    : 100%; // prevent adjustments of font size after orientation changes in iOS
+    -webkit-font-smoothing      : antialiased; // make text sharper
+    -moz-osx-font-smoothing     : grayscale; // make text sharper
+    -webkit-tap-highlight-color : transparent; // overrides the highlight color shown when the user taps a link or a JavaScript clickable element in Safari on iOS
 }
 
 body {
-  box-sizing : border-box; // normalize box-sizing
-  margin     : 0 auto; // reset and centering
+    box-sizing : border-box; // normalize box-sizing
+    margin     : 0 auto; // reset and centering
 }
 
 div {
-  box-sizing : border-box; // normalize box-sizing
+    box-sizing : border-box; // normalize box-sizing
 }
 
 h1,
 p {
-  box-sizing : border-box; // normalize box-sizing
-  margin     : 0; // reset
+    box-sizing : border-box; // normalize box-sizing
+    margin     : 0; // reset
 }
 
-img {
-  box-sizing : border-box; // normalize box-sizing
-  display    : block; // reset
-  width      : 100%; // 100% of container width,
-  max-width  : 100%; // but not wider then itself
+img,
+video {
+    box-sizing : border-box; // normalize box-sizing
+    display    : block; // reset
+    max-width  : 100%; // but not wider then itself
 }
 
 a {
-  color           : inherit; // reset
-  text-decoration : none; // reset
-  touch-action    : manipulation; // remove 300ms lag on touch in iOS
+    color           : inherit; // reset
+    text-decoration : none; // reset
+    touch-action    : manipulation; // remove 300ms lag on touch in iOS
 }
 
 button {
-  box-sizing         : border-box; // normalize box-sizing
-  display            : block; // reset
-  margin             : 0; // reset
-  padding            : 0; // reset
-  border             : 0; // reset
-  background         : transparent; // reset
-  cursor             : pointer; // set default cursor for buttons
-  user-select        : none; // prevent button text selection on dbl-click
-  touch-action       : manipulation; // remove 300ms lag on touch in iOS
-  -webkit-appearance : button; // correct the inability to style clickable types in iOS
+    box-sizing         : border-box; // normalize box-sizing
+    display            : block; // reset
+    margin             : 0; // reset
+    padding            : 0; // reset
+    border             : 0; // reset
+    background         : transparent; // reset
+    cursor             : pointer; // set default cursor for buttons
+    user-select        : none; // prevent button text selection on dbl-click
+    touch-action       : manipulation; // remove 300ms lag on touch in iOS
+    -webkit-appearance : button; // correct the inability to style clickable types in iOS
 }
 
 button::-moz-focus-inner {
-  padding : 0; // reset
-  border  : 0; // reset
+    padding : 0; // reset
+    border  : 0; // reset
 }
 
 label {
-  box-sizing   : border-box; // normalize box-sizing
-  display      : block; // reset
-  touch-action : manipulation; // remove 300ms lag on touch in iOS
+    box-sizing   : border-box; // normalize box-sizing
+    display      : block; // reset
+    touch-action : manipulation; // remove 300ms lag on touch in iOS
 }
 
 progress {
-  box-sizing : border-box; // normalize box-sizing
-  display    : block; // reset
-  width      : 100%; // set width to 100% of container width
+    box-sizing : border-box; // normalize box-sizing
+    display    : block; // reset
+    width      : 100%; // set width to 100% of container width
 }
 
 progress::-webkit-progress-bar {
-  background : transparent; // reset
+    background : transparent; // reset
 }
 
 a:focus,
 button:focus {
-  outline : 0; // reset
+    outline : 0; // reset
 }
 
+/*-----------------------*
+  #ELEMENTS
+ *-----------------------*/
 html,
 button {
-  font : normal 400 20px/1.5 monospace, monospace;
+    font : $font_sec_style $font_sec_weight 20px/1.2 $font_sec, monospace;
 }
 
-h1,
-label {
-  font-weight : 700;
+h1 {
+    font-family : $font_prim;
+    font-style  : $font_prim_style;
+    font-weight : $font_prim_weight;
 }
 
 small,
 label {
-  font-size   : .8rem;
+    font-size : .8rem;
 }
 
 progress {
-  border     : 2px solid #111;
-  height     : 1rem * 1.5;
-  background : transparent;
+    border        : 2px solid $prim_color;
+    border-radius : 4px;
+    height        : 1rem * 1.4;
+    background    : transparent;
+    box-shadow    : 0 1px 4px rgba($prim_color, .5);
 }
 
 progress::-webkit-progress-value {
-  background : dodgerblue;
+    background : linear-gradient($accent_color, $accent_color_full);
 }
 
 progress::-moz-progress-bar {
-  background : dodgerblue;
+    background : linear-gradient($accent_color, $accent_color_full);
 }
 
 a {
-  transition: .2s;
+    transition : .2s;
 }
 
+/*-----------------------*
+  #BASE CLASSES
+ *-----------------------*/
 .padding-wrapper {
-  padding : .5rem;
+    padding : .5rem;
 }
 
 .pad-wrapper {
-  max-width : 600px;
-}
-
-html {
-  height : 100%;
-}
-
-body {
-  display        : flex;
-  flex-direction : column;
-  min-width      : 300px;
-  max-width      : 1200px;
-  min-height     : 100%;
-}
-
-main {
-  flex : 1; // maximize height of content on short page
-}
-
-.flex {
-  display   : flex;
-  flex-wrap : wrap;
-}
-
-.justify-center {
-  justify-content : center;
-}
-
-.align-center {
-  align-items : center;
-}
-
-.width-100 {
-  width : 100%;
+    width     : 100%;
+    max-width : 600px;
 }
 
 .margin-top {
     margin-top: 1rem;
 }
 
-.header {
-    font-size: 2rem;
-    line-height: 1.2;
-    text-align: center;
+/*-----------------------*
+  #CUSTOM CLASSES
+ *-----------------------*/
+.h1 {
+    font-size : 3rem;
 }
 
-.header::first-letter {
-    display: inline-block;
-    padding: 0 .1rem 0 1rem;
-    background: dodgerblue;
-    color: #fff;
+@media (max-width : 600px) {
+    .h1 {
+        font-size   : 2.4rem;
+        line-height : 1;
+    }
 }
 
-.container {
-    position: relative;
+.tip {
+    position       : absolute;
+    top            : calc(50% - 2rem);
+    left           : calc(50% - 3rem);
+    padding        : .5rem;
+    background     : $accent_color;
+    color          : $bg_color;
+    width          : 6rem;
+    height         : 4rem;
+    pointer-events : none;
+    animation      : tip 1.6s ease-in infinite alternate-reverse;
+    clip-path      : polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
 }
 
-.sub-header {
-    position: absolute;
-    top: -1.5rem;
-    left: calc(50% - 2.5rem);
-    font-size: .7rem;
-    line-height: 1.1;
-    color: #666;
-    width: 5rem;
-    pointer-events: none;
-}
-
-.arrow {
-    display: inline-block;
-    position: absolute;
-    top: .7rem;
-    right: 1rem;
-    font-size: 1rem;
-    color: #111;
-    animation: arrow 1s ease-in infinite alternate-reverse;
-}
-
-.footer {
-    text-align: right;
+.clicked > .tip {
+    opacity    : 0;
+    transition : .8s;
 }
 
 .link {
-    display: inline-block;
+    display         : inline-block;
     text-decoration : underline;
-    transform: translateZ(0) scale(1);
+    transform       : scale3d(1, 1, 1);
 }
 
 @media (min-device-width : 1280px) {
     .link:hover {
-        transform: translateZ(0) scale(1.2);
+        transform : scale3d(1.2, 1.2, 1);
     }
 }
 
 .link:active {
-    transform: translateZ(0) scale(1.2);
+    transform : scale3d(1.2, 1.2, 1);
 }
 
 .completed::after {
-    display: inline-block;
-    content: attr(data-percent) '%';
-    margin-left: .25rem;
-    transform: scale(1.1);
+    display        : inline-block;
+    vertical-align : bottom;
+    content        : attr(data-percent) '%';
+    margin-left    : .25rem;
+    font-family    : monospace;
+}
+
+/*-----------------------*
+  #GRID
+ *-----------------------*/
+html {
+    height     : 100%;
+    background : $bg_color;
+}
+
+body {
+    display        : flex;
+    flex-direction : column;
+    min-width      : 300px;
+    max-width      : 1200px;
+    min-height     : 100%;
+}
+
+main {
+    flex : 1; // maximize height of content on short page
+}
+
+.flex {
+    display   : flex;
+    flex-wrap : wrap;
+}
+
+.justify-center {
+    justify-content : center;
+}
+
+.align-center {
+    align-items : center;
+}
+
+.text-align-right {
+    text-align : right;
+}
+
+.text-align-center {
+    text-align : center;
+}
+
+.position-relative {
+    position : relative;
 }
