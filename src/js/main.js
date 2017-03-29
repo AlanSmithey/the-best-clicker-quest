@@ -1,23 +1,24 @@
 /*-----------------------*
- #DEFER LINKS
+ #DEFER RESOURCES
  *-----------------------*/
 (function() {
     'use strict';
     var counter = 0;
-    var elements = [
+    var STYLES = [
         'css/styles.min.css',
         'https://fonts.googleapis.com/css?family=Griffy|Indie+Flower'
     ];
 
+    var IMAGES = [];
+
     function count() {
         counter++;
-        if (counter === elements.length) {
+        if (counter === STYLES.length + IMAGES.length) {
             document.body.classList.remove('pause');
         }
     }
 
-    function controller(url) {
-
+    function stylesLoader(url) {
         var element = document.createElement('link');
 
         element.href = url;
@@ -27,10 +28,26 @@
         document.head.appendChild(element);
     }
 
-    for (var i = 0, len = elements.length; i < len; i++) {
-        controller(elements[i]);
+    function imagesLoader() {
+        var images = document.getElementsByTagName('img');
+
+        if (images) {
+            for (var i = 0, len = images.length; i < len; i++) {
+                IMAGES.push(i);
+
+                images[i].onload = count;
+                images[i].removeAttribute('srcset');
+            }
+        }
     }
+
+    for (var i = 0, len = STYLES.length; i < len; i++) {
+        stylesLoader(STYLES[i]);
+    }
+
+    imagesLoader();
 })();
+
 /*-----------------------*
  #iOS ACTIVE STATE HACK
  *-----------------------*/
@@ -38,20 +55,6 @@
     'use strict';
     document.addEventListener("touchstart", function() {
     });
-})();
-
-/*-----------------------*
- #DEFER IMAGES
- *-----------------------*/
-(function() {
-    'use strict';
-    var images = document.getElementsByTagName('img');
-
-    if (images) {
-        for (var i = 0, len = images.length; i < len; i++) {
-            images[i].removeAttribute('srcset');
-        }
-    }
 })();
 
 /*-----------------------*
