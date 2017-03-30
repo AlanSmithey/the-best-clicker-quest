@@ -168,6 +168,8 @@ a {
 }
 
 .tip {
+  box-sizing: border-box;
+  display: block;
   position: absolute;
   top: calc(50% - 2rem);
   left: calc(50% - 3rem);
@@ -175,7 +177,6 @@ a {
   background: rgba(229, 57, 53, 0.5);
   color: #fff;
   width: 6rem;
-  height: 4rem;
   pointer-events: none;
   animation: tip 1.6s ease-in infinite alternate-reverse;
   -webkit-clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
