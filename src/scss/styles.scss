@@ -46,7 +46,13 @@ body {
     margin     : 0 auto; // reset and centering
 }
 
-div {
+figure {
+    box-sizing : border-box;
+    margin     : 0;
+}
+
+div,
+figcaption {
     box-sizing : border-box; // normalize box-sizing
 }
 
@@ -87,12 +93,6 @@ button::-moz-focus-inner {
     border  : 0; // reset
 }
 
-label {
-    box-sizing   : border-box; // normalize box-sizing
-    display      : block; // reset
-    touch-action : manipulation; // remove 300ms lag on touch in iOS
-}
-
 progress {
     box-sizing : border-box; // normalize box-sizing
     display    : block; // reset
@@ -123,7 +123,7 @@ h1 {
 }
 
 small,
-label {
+figcaption {
     font-size : .8rem;
 }
 
