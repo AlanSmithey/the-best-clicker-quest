@@ -20,8 +20,11 @@
     function count() {
         counter++;
         if (counter === elements.getLength()) {
-            document.documentElement.classList.add('loaded'); // optional
-            document.body.classList.remove('pause');
+            setInterval(function(){
+                document.documentElement.classList.add('loaded'); // optional
+                document.body.classList.remove('pause');
+            }, 500);
+            
         }
     }
 
