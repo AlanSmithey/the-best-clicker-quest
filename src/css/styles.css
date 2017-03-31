@@ -108,7 +108,7 @@ button {
 html::before {
   content: 'LOADING...';
   display: inline-block;
-  position: absolute;
+  position: fixed;
   font-family: monospace;
   font-size: 2rem;
   color: #111;
