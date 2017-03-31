@@ -116,6 +116,22 @@ button {
     font : $font_sec_style $font_sec_weight 20px/1.2 $font_sec, monospace;
 }
 
+html::before {
+    content     : 'LOADING...';
+    display     : inline-block;
+    position    : absolute;
+    font-family : monospace;
+    font-size   : 2rem;
+    color       : $prim_color;
+    top         : 50%;
+    left        : 50%;
+    transform   : translate(-50%, -50%);
+}
+
+.loaded::before {
+    display : none;
+}
+
 h1 {
     font-family : $font_prim;
     font-style  : $font_prim_style;

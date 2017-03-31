@@ -105,6 +105,18 @@ button {
   font: normal 400 20px/1.2 "Indie Flower", monospace;
 }
 
+html::before {
+  content: 'LOADING...';
+  display: inline-block;
+  position: absolute;
+  font-family: monospace;
+  font-size: 2rem;
+  color: #111;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 h1 {
   font-family: "Griffy";
   font-style: normal;

@@ -4,48 +4,62 @@
 (function() {
     'use strict';
     var counter = 0;
-    var STYLES = [
-        'css/styles.min.css',
-        'https://fonts.googleapis.com/css?family=Griffy|Indie+Flower'
-    ];
+    var elements = {
+        styles: [
+            'css/styles.min.css',
+            'https://fonts.googleapis.com/css?family=Griffy|Indie+Flower'
+        ],
+        images: document.getElementsByTagName('img'),
+        medias: document.querySelectorAll('[data-src]'),
 
-    var IMAGES = [];
+        getLength: function() {
+            return this.styles.length + this.images.length + this.medias.length;
+        }
+    };
 
     function count() {
         counter++;
-        if (counter === STYLES.length + IMAGES.length) {
+        if (counter === elements.getLength()) {
+            document.documentElement.classList.add('loaded'); // optional
             document.body.classList.remove('pause');
         }
     }
 
-    function stylesLoader(url) {
-        var element = document.createElement('link');
+    function stylesLoader() {
 
-        element.href = url;
-        element.rel = 'stylesheet';
-        element.onload = count;
+        for (var i = 0, len = elements.styles.length; i < len; i++) {
+            var style = document.createElement('link');
 
-        document.head.appendChild(element);
-    }
+            style.href = elements.styles[i];
+            style.rel = 'stylesheet';
+            style.onload = count;
 
-    function imagesLoader() {
-        var images = document.getElementsByTagName('img');
-
-        if (images) {
-            for (var i = 0, len = images.length; i < len; i++) {
-                IMAGES.push(i);
-
-                images[i].onload = count;
-                images[i].removeAttribute('srcset');
-            }
+            document.head.appendChild(style);
         }
     }
 
-    for (var i = 0, len = STYLES.length; i < len; i++) {
-        stylesLoader(STYLES[i]);
+    function imagesLoader() {
+
+        for (var i = 0, len = elements.images.length; i < len; i++) {
+
+            elements.images[i].onload = count;
+            elements.images[i].removeAttribute('srcset');
+        }
     }
 
+    function mediasLoader() {
+
+        for (var i = 0, len = elements.medias.length; i < len; i++) {
+            var mediaAttr = elements.medias[i].getAttribute('data-src');
+
+            elements.medias[i].onload = count;
+            elements.medias[i].setAttribute('src', mediaAttr);
+        }
+    };
+
+    stylesLoader();
     imagesLoader();
+    mediasLoader();
 })();
 
 /*-----------------------*
