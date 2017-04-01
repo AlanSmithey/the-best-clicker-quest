@@ -8,4 +8,4 @@
 4. make progress...
 5. and tap again
 
-**The primary imminence - it's *you* and your doubts!**
+> "*The primary imminence - it's *you* and your doubts!*"
