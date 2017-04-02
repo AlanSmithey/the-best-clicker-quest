@@ -1,4 +1,4 @@
-<!doctype html> <html lang="en-us"> <head> <meta name="google-site-verification" content="HOVywpRusKw0F7vIs2XjF7gVmFqnm7GKMp-mLEQfsrg"> <meta charset="utf-8"> <title>The best clicker quest!</title> <meta name="description" content="Browser game for everyone clicker-fan"> <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"> <base href="https://alansmithey.github.io/the-best-clicker-quest/" target="_blank"> <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content="@alan_smithey"> <meta property="og:url" content="https://alansmithey.github.io/the-best-clicker-quest/index.html"> <meta property="og:title" content="The best clicker quest!"> <meta property="og:description" content="Browser game for everyone clicker-fan"> <meta property="og:site_name" content="the-best-clicker-quest"> <meta property="og:locale" content="en_US"> <meta property="og:image:type" content="image/jpeg"> <meta property="og:image" content="https://alansmithey.github.io/the-best-clicker-quest/social-icon-2.jpg"> <meta property="og:image:secure_url" content="https://alansmithey.github.io/the-best-clicker-quest/social-icon-2.jpg"> <meta property="og:image:width" content="968"> <meta property="og:image:height" content="504"> <style> @keyframes fade_in {
+<!doctype html> <html class="html-loading" lang="en-us"> <head> <meta charset="utf-8"> <title>The best clicker quest!</title> <meta name="description" content="Browser game for everyone clicker-fan"> <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"> <base href="https://alansmithey.github.io/the-best-clicker-quest/" target="_blank"> <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> <meta name="google-site-verification" content="HOVywpRusKw0F7vIs2XjF7gVmFqnm7GKMp-mLEQfsrg"> <meta name="yandex-verification" content="668ce6eda2ba8c39"> <meta name="twitter:card" content="summary_large_image"> <meta name="twitter:site" content="@alan_smithey"> <meta property="og:url" content="https://alansmithey.github.io/the-best-clicker-quest/index.html"> <meta property="og:title" content="The best clicker quest!"> <meta property="og:description" content="Browser game for everyone clicker-fan"> <meta property="og:site_name" content="the-best-clicker-quest"> <meta property="og:locale" content="en_US"> <meta property="og:image:type" content="image/jpeg"> <meta property="og:image" content="https://alansmithey.github.io/the-best-clicker-quest/social-icon-2.jpg"> <meta property="og:image:secure_url" content="https://alansmithey.github.io/the-best-clicker-quest/social-icon-2.jpg"> <meta property="og:image:width" content="968"> <meta property="og:image:height" content="504"> <style> @keyframes fade_in {
       0% {
         opacity: 0;
       }
@@ -8,12 +8,24 @@
     }
     
     body {
-      animation: fade_in .4s .4s backwards;
+      animation: fade_in .5s backwards;
     }
     
-    .pause {
+    .body-pause {
       animation-play-state: paused;
-    } </style> </head> <body class="pause"> <header class="padding-wrapper text-align-center"> <h1 class="h1 margin-top">The best Clicker Quest</h1> </header> <main class="flex justify-center align-center padding-wrapper"> <div class="pad-wrapper"> <div class="flex justify-center"> <button class="position-relative" id="button" type="button"> <span class="tip">Tap here to wake up your Hero!</span> <img src="img/hero.gif" width="300" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="sleeping hero"> </button> </div> <figure> <figcaption data-percent="0" id="label">Level completion:</figcaption> <progress value="0" max="12" id="progress"></progress> </figure> </div> </main> <footer class="flex justify-center padding-wrapper"> <div class="pad-wrapper text-align-right"> <small><a class="link" href="https://github.com/AlanSmithey/the-best-clicker-quest" rel="noreferrer noopener external" aria-label="Learn more about this project (opens in new window)">About</a></small> </div> </footer> <script> function deferLoading() {
+    }
+
+    .html-loading::before {
+        content     : 'LOADING...';
+        display     : inline-block;
+        position    : fixed;
+        font-family : monospace;
+        font-size   : 40px;
+        color       : #000;
+        top         : 50%;
+        left        : 50%;
+        transform   : translate(-50%, -50%);
+    } </style> </head> <body class="body-pause"> <header class="padding-wrapper text-align-center"> <h1 class="h1 margin-top">The best Clicker Quest</h1> </header> <main class="flex justify-center align-center padding-wrapper"> <div class="pad-wrapper"> <div class="flex justify-center"> <button class="position-relative" id="button" type="button"> <span class="tip">Tap here to wake up your Hero!</span> <img src="img/hero.gif" width="300" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" alt="sleeping hero"> </button> </div> <figure> <figcaption data-percent="0" id="label">Level completion:</figcaption> <progress value="0" max="12" id="progress"></progress> </figure> </div> </main> <footer class="flex justify-center padding-wrapper"> <div class="pad-wrapper text-align-right"> <small><a class="link" href="https://github.com/AlanSmithey/the-best-clicker-quest" rel="noreferrer noopener external" aria-label="Learn more about this project (opens in new window)">About</a></small> </div> </footer> <script> function deferLoading() {
       'use strict';
       var script = document.createElement('script');
       script.src = 'js/app.min.js';

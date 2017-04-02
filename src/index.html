@@ -1,8 +1,7 @@
 <!doctype html>
-<html lang='en-us'>
+<html class="html-loading" lang='en-us'>
 
 <head>
-  <meta name="google-site-verification" content="HOVywpRusKw0F7vIs2XjF7gVmFqnm7GKMp-mLEQfsrg" />
   <meta charset='utf-8'>
   <title>The best clicker quest!</title>
   <meta name='description' content='Browser game for everyone clicker-fan'>
@@ -10,6 +9,10 @@
   <base href='https://alansmithey.github.io/the-best-clicker-quest/' target='_blank'>
   <!--<base href='http://localhost:8080' target='_blank'>-->
   <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'>
+
+  <!--Search engines-->
+  <meta name="google-site-verification" content="HOVywpRusKw0F7vIs2XjF7gVmFqnm7GKMp-mLEQfsrg" />
+  <meta name="yandex-verification" content="668ce6eda2ba8c39" />
 
   <!-- Twitter -->
   <meta name='twitter:card' content='summary_large_image'>
@@ -37,17 +40,29 @@
     }
     
     body {
-      animation: fade_in .4s .4s backwards;
+      animation: fade_in .5s backwards;
     }
     
-    .pause {
+    .body-pause {
       animation-play-state: paused;
+    }
+
+    .html-loading::before {
+        content     : 'LOADING...';
+        display     : inline-block;
+        position    : fixed;
+        font-family : monospace;
+        font-size   : 40px;
+        color       : #000;
+        top         : 50%;
+        left        : 50%;
+        transform   : translate(-50%, -50%);
     }
   </style>
 
 </head>
 
-<body class='pause'>
+<body class='body-pause'>
   <header class="padding-wrapper text-align-center">
 
     <h1 class="h1 margin-top">The best Clicker Quest</h1>
