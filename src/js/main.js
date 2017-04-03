@@ -102,18 +102,27 @@
         label = document.getElementById('label');
 
     var percent = 0,
-        x = 0;
+        startPoint = progress.value,
+        endPoint = progress.max,
+        changeValue = endPoint - startPoint,
+        x = startPoint;
 
     function clickHandler(e) {
         button.classList.add('clicked');
 
         if(progress.value < progress.max) {
-            progress.value = Math.sqrt(++x);
+            Math.easeOutQuad = function (t, b, c, d) {
+                t /= d;
+                return -c * t*(t-2) + b;
+            };
+
+            progress.value = Math.easeOutQuad(++x, startPoint, changeValue, endPoint);
+            
         } else {
             label.setAttribute('data-percent', ++percent);
             label.classList.add('completed');
-            progress.value = 0;
-            x = 0;
+            progress.value = startPoint;
+            x = startPoint;
         }
     }
 
